@@ -17,16 +17,20 @@
 from django import forms
 
 from ..utils import get_max_length
-from ..validators import MaxValueMultiFieldValidator, MinChoicesValidator, MaxChoicesValidator
+from ..validators import (
+    MaxValueMultiFieldValidator,
+    MinChoicesValidator,
+    MaxChoicesValidator,
+)
 
 
 class MultiSelectFormField(forms.MultipleChoiceField):
     widget = forms.CheckboxSelectMultiple
 
     def __init__(self, *args, **kwargs):
-        self.min_choices = kwargs.pop('min_choices', None)
-        self.max_choices = kwargs.pop('max_choices', None)
-        self.max_length = kwargs.pop('max_length', None)
+        self.min_choices = kwargs.pop("min_choices", None)
+        self.max_choices = kwargs.pop("max_choices", None)
+        self.max_length = kwargs.pop("max_length", None)
         super(MultiSelectFormField, self).__init__(*args, **kwargs)
         self.max_length = get_max_length(self.choices, self.max_length)
         self.validators.append(MaxValueMultiFieldValidator(self.max_length))

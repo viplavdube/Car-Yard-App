@@ -6,23 +6,26 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('cars', '0003_auto_20210331_1631'),
+        ("cars", "0003_auto_20210331_1631"),
     ]
 
     operations = [
         migrations.AlterField(
-            model_name='car',
-            name='doors',
-            field=models.CharField(choices=[('2', '2'), ('3', '3'), ('4', '4'), ('5', '5'), ('6', '6')], max_length=50),
+            model_name="car",
+            name="doors",
+            field=models.CharField(
+                choices=[("2", "2"), ("3", "3"), ("4", "4"), ("5", "5"), ("6", "6")],
+                max_length=50,
+            ),
         ),
         migrations.AlterField(
-            model_name='car',
-            name='interior',
+            model_name="car",
+            name="interior",
             field=models.CharField(max_length=100),
         ),
         migrations.AlterField(
-            model_name='car',
-            name='miles',
+            model_name="car",
+            name="miles",
             field=models.IntegerField(),
         ),
     ]

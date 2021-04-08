@@ -6,28 +6,46 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('cars', '0001_initial'),
+        ("cars", "0001_initial"),
     ]
 
     operations = [
         migrations.RemoveField(
-            model_name='car',
-            name='door',
+            model_name="car",
+            name="door",
         ),
         migrations.AddField(
-            model_name='car',
-            name='doors',
-            field=models.CharField(choices=[('Cruise Control', 'Cruise Control'), ('Audio Interface', 'Audio Interface'), ('Airbags', 'Airbags'), ('Air Conditioning', 'Air Conditioning'), ('Seat Heating', 'Seat Heating'), ('Alarm System', 'Alarm System'), ('ParkAssist', 'ParkAssist'), ('Power Steering', 'Power Steering'), ('Reversing Camera', 'Reversing Camera'), ('Direct Fuel Injection', 'Direct Fuel Injection'), ('Auto Start/Stop', 'Auto Start/Stop'), ('Wind Deflector', 'Wind Deflector'), ('Bluetooth Handset', 'Bluetooth Handset')], default=1, max_length=50),
+            model_name="car",
+            name="doors",
+            field=models.CharField(
+                choices=[
+                    ("Cruise Control", "Cruise Control"),
+                    ("Audio Interface", "Audio Interface"),
+                    ("Airbags", "Airbags"),
+                    ("Air Conditioning", "Air Conditioning"),
+                    ("Seat Heating", "Seat Heating"),
+                    ("Alarm System", "Alarm System"),
+                    ("ParkAssist", "ParkAssist"),
+                    ("Power Steering", "Power Steering"),
+                    ("Reversing Camera", "Reversing Camera"),
+                    ("Direct Fuel Injection", "Direct Fuel Injection"),
+                    ("Auto Start/Stop", "Auto Start/Stop"),
+                    ("Wind Deflector", "Wind Deflector"),
+                    ("Bluetooth Handset", "Bluetooth Handset"),
+                ],
+                default=1,
+                max_length=50,
+            ),
             preserve_default=False,
         ),
         migrations.AlterField(
-            model_name='car',
-            name='fuel_type',
+            model_name="car",
+            name="fuel_type",
             field=models.CharField(max_length=50),
         ),
         migrations.AlterField(
-            model_name='car',
-            name='is_featured',
+            model_name="car",
+            name="is_featured",
             field=models.BooleanField(default=False),
         ),
     ]
