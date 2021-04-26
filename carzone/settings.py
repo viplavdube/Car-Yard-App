@@ -25,7 +25,7 @@ TEMPLATE_DIR = os.path.join(BASE_DIR, "templates")
 SECRET_KEY = "iek3c019&%7mwp!292px3(m6r)bv$281#jrudnvu*^k9k-x0-j"
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['aqueous-earth-72567.herokuapp.com', 'getcarzoneapp.co', 'www.getcarzoneapp.co']
 LOGIN_REDIRECT_URL = "dashboard"
