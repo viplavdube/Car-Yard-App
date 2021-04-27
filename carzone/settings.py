@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/3.0/ref/settings/
 
 import os
 import dj_database_url
+from decouple import config
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -22,12 +23,17 @@ TEMPLATE_DIR = os.path.join(BASE_DIR, "templates")
 # See https://docs.djangoproject.com/en/3.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = "iek3c019&%7mwp!292px3(m6r)bv$281#jrudnvu*^k9k-x0-j"
+SECRET_KEY = config("SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['aqueous-earth-72567.herokuapp.com', 'getcarzoneapp.co', 'www.getcarzoneapp.co']
+ALLOWED_HOSTS = [
+    "aqueous-earth-72567.herokuapp.com",
+    "getcarzoneapp.co",
+    "www.getcarzoneapp.co",
+    "localhost",
+]
 LOGIN_REDIRECT_URL = "dashboard"
 
 
@@ -95,12 +101,18 @@ WSGI_APPLICATION = "carzone.wsgi.application"
 #         "ENGINE": "django.db.backends.postgresql",
 #         "NAME": "carzone_db",
 #         "USER": "postgres",
-#         "PASSWORD": "Bharatmata45$",
+#         "PASSWORD": DATABASE_PASSWORD,
 #         "Host": "localhost",
 #     }
 # }
 
-DATABASES = {'default' : dj_database_url.config(default='postgres://postgres:Bharatmata45$@localhost/carzone_db')}
+DATABASE_PASSWORD = config("DATABASE_PASSWORD")
+DATABASE_NAME = config("DATABASE_NAME")
+DATABASES = {
+    "default": dj_database_url.config(
+        default=f"postgres://postgres:{DATABASE_PASSWORD}@localhost/{DATABASE_NAME}"
+    )
+}
 
 # Password validation
 # https://docs.djangoproject.com/en/3.0/ref/settings/#auth-password-validators
@@ -158,10 +170,10 @@ SITE_ID = 4
 # Email Sending
 EMAIL_HOST = "smtp.gmail.com"
 EMAIL_PORT = 587
-EMAIL_HOST_USER = "viplav45@gmail.com"
-EMAIL_HOST_PASSWORD = "Password"
+EMAIL_HOST_USER = config("EMAIL_HOST_USER")
+EMAIL_HOST_PASSWORD = config("EMAIL_HOST_PASSWORD")
 EMAIL_USE_TLS = True
 
 
 # WhiteNoise Settings
-STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
